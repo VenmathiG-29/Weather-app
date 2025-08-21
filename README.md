@@ -31,8 +31,6 @@ Technologies Used
 Setup & Usage
 - Get OpenWeatherMap API Key
 
-- Register and get a free API key from https://openweathermap.org/.
-
 - Configure the App
 
 - Open the script.js file.
