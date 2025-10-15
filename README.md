@@ -1,61 +1,47 @@
-Weather App
-Project Overview
-- This is a web-based Weather Application built using HTML, CSS, and JavaScript. It allows users to enter a city or location and fetches current weather conditions, including temperature, weather description, humidity, sunrise time, and a weather icon using the OpenWeatherMap API.
+# 🌦️ Weather App
 
-Features
-- Search weather by city or location.
+This is an online weather application that allows users to check the weather of any city.  
+It is built using **HTML**, **CSS**, and **JavaScript**, and was inspired by **GreatStack**.
 
-- Display current temperature in Celsius.
+---
 
-- Show weather description and icon.
+## 🌐 API Used
+- **OpenWeather API**
 
-- Show additional details like humidity and local sunrise time.
+---
 
-- Real-time weather updates every 60 seconds without page refresh.
+## 🚀 Set Up / Get Started
+To access this website, [click here](#)  
+*(Replace `#` with your deployed app link)*
 
-- Dark mode toggle for better user experience in low-light environments.
+---
 
-- Responsive design for seamless use on both desktop and mobile devices.
+## ✨ Features
+- Display **temperature**, **humidity**, and **wind speed** of the city/country after user input  
+- Display **error message** when invalid input is received  
 
-- User-friendly error handling for invalid locations or API failures.
+---
 
-Technologies Used
-- HTML5
+## 🧠 My Learnings in this Project
+- Integrated an **API** to retrieve and display current weather data  
+- Used **JavaScript** for backend-like functionality — handling API responses, displaying weather info, and managing error states  
+- Improved understanding of:
+  - **CSS** (Flexbox layout)
+  - **JavaScript** (JSON parsing, DOM manipulation with `querySelector`, `innerHTML`, etc.)
 
-- CSS3 (including responsive design and dark mode styles)
+---
 
-- JavaScript (fetch API, async/await)
+## 💡 Suggestions
+Feel free to **open an issue** or **make a pull request** on the [GitHub repository](#)  
+*(Replace `#` with your repo link)*  
+if you have suggestions to improve this project.
 
-- OpenWeatherMap API for weather data
+---
 
-Setup & Usage
-- Get OpenWeatherMap API Key
+## 👩‍💻 Author
+**Phoebe Tan Jia Hui**
 
-- Configure the App
+---
 
-- Open the script.js file.
-
-- Replace the placeholder 'YOUR_OPENWEATHERMAP_API_KEY' with your actual API key.
-
-- Run the App
-
-- Open the index.html file in any modern web browser.
-
-- Enter a city or location in the input box and click "Get Weather".
-
-- Use the "Toggle Dark Mode" button to switch between themes.
-
-- The app updates the weather information automatically every minute.
-
-File Structure
-- index.html — Main HTML structure of the app.
-
-- styles.css — CSS styles including layout, responsiveness, and dark mode.
-
-- script.js — JavaScript to handle user input, API requests, weather data display, and real-time updates.
-
-Notes
-- Ensure an active internet connection for fetching weather data.
-
-- The app respects API usage limits as per OpenWeatherMap's free tier.
-
+## 📜 License
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
