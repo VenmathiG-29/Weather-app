@@ -1,124 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Advanced Weather App</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .weather-container {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 320px;
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        input[type="text"] {
-            width: 80%;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            outline: none;
-            transition: border 0.3s;
-        }
-        input[type="text"]:focus {
-            border-color: #2980b9;
-        }
-        button {
-            padding: 0.5rem 1.2rem;
-            font-size: 1rem;
-            color: white;
-            background-color: #2980b9;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #1f618d;
-        }
-        .weather-info {
-            margin-top: 1.5rem;
-        }
-        .weather-info h2 {
-            margin: 0.5rem 0;
-            color: #34495e;
-        }
-        .temperature {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #e67e22;
-        }
-        .description {
-            font-size: 1.3rem;
-            text-transform: capitalize;
-            color: #34495e;
-        }
-        .date-time {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #7f8c8d;
-        }
-        .icon {
-            margin-top: 1rem;
-            width: 100px;
-            height: 100px;
-        }
-        .error {
-            margin-top: 1rem;
-            color: #c0392b;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="weather-container">
-        <h1>Weather App</h1>
-        <input type="text" id="locationInput" placeholder="Enter city or location" />
-        <button id="searchBtn">Get Weather</button>
-        <div class="weather-info" id="weatherInfo" style="display:none;">
-            <h2 id="locationName"></h2>
-            <p class="date-time" id="localDateTime"></p>
-            <img id="weatherIcon" class="icon" alt="Weather icon" />
-            <p class="temperature" id="temperature"></p>
-            <p class="description" id="description"></p>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Weather Application</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="title">Check City Weather</h1>
+      <div class="search">
+        <input type="text" placeholder="Enter city name" spellcheck="false">
+        <button><img src="images/search.png"></button>
+      </div>
+      <div class="error">
+        <p>Invalid city name</p>
+      </div>
+      <div class="weather">
+        <img src="images/rain.png" alt="weather icon" class="weather-icon">
+        <h1 class="temp">20°C</h1>
+        <h2 class="city">New York</h2>
+        <div class="details">
+          <div class="col">
+            <img src="images/humidity.png" alt="humidity icon">
+            <div>
+              <p class="humidity">50%</p>
+              <p>Humidity</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="images/wind.png" alt="wind icon">
+            <div>
+              <p class="wind">15 KM/H</p>
+              <p>Wind Speed</p>
+            </div>
+          </div>
         </div>
-        <p class="error" id="errorMessage" style="display:none;"></p>
+
+      </div>
     </div>
-<label class="switch">
-  <input type="checkbox" id="darkModeToggle" />
-  <span class="slider"></span>
-</label>
+    <script>
+      const apiKey = "312abfd953c970ceaf81f671079f6e22";
+      const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+      const searchBox = document.querySelector(".search input");
+      const searchBtn = document.querySelector(".search button");
+      const weatherIcon = document.querySelector(".weather-icon");
 
-<!-- Or simpler button -->
-<button id="darkModeToggleBtn">Toggle Dark Mode</button>
-<div class="weather-info" id="weatherInfo" style="display:none;">
-    <h2 id="locationName"></h2>
-    <p class="date-time" id="localDateTime"></p>
-    <img id="weatherIcon" class="icon" alt="Weather icon" />
-    <p class="temperature" id="temperature"></p>
-    <p class="description" id="description"></p>
+      async function checkWeather(city){
+        const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+        
+        if(response.status == 404){
+          document.querySelector(".error").style.display = "block";
+          document.querySelector(".weather").style.display = "none";
+        }else{
+          //variable data contains all weather information from apiUrl
+          var data = await response.json(); //object that contains method for parsing values and convert values to JSON
 
-    <!-- New additional details -->
-    <p id="humidity"></p>
-    <p id="sunrise"></p>
-</div>
+          //queryselector returns first element within document that matches specified selector, if no matches are found null is returned
+          //innerHTML = gets/sets HTML markup contained within the element
+          //in this case it will search for the class city, select the h2 element and replace the city name
+          document.querySelector(".city").innerHTML = data.name;
+          document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+          document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+          document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+        
+          if(data.weather[0].main == "Clouds")
+          {
+            weatherIcon.src = src = "images/clouds.png";
+          }
+          else if(data.weather[0].main == "Clear"){
+            weatherIcon.src = src = "images/clear.png";
+          }
+          else if(data.weather[0].main == "Rain"){
+            weatherIcon.src = src = "images/rain.png";
+          }
+          else if(data.weather[0].main == "Drizzle"){
+            weatherIcon.src = src = "images/drizzle.png";
+          }
+          else if(data.weather[0].main == "Mist"){
+            weatherIcon.src = src = "images/mist.png";
+          }
+          else if(data.weather[0].main == "Snow"){
+            weatherIcon.src = src = "images/snow.png";
+          }
+          else{
+            weatherIcon.src = src = "images/wind.png";
+          }
 
-</body>
+          document.querySelector(".weather").style.display = "block"; // block the display element -> display weather
+          document.querySelector(".error").style.display = "none"; 
+        }
+      }
+
+      searchBtn.addEventListener("click", ()=>{
+        checkWeather(searchBox.value);
+      })
+    </script>
+  </body>
 </html>
