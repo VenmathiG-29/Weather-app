@@ -11,8 +11,8 @@ It is built using **HTML**, **CSS**, and **JavaScript**, and was inspired by **G
 ---
 
 ## 🚀 Set Up / Get Started
-To access this website, [click here](#)  
-*(Replace `#` with your deployed app link)*
+To access this website, [click here](https://venmathig-29.github.io/Weather-app/)  
+
 
 ---
 
@@ -32,16 +32,13 @@ To access this website, [click here](#)
 ---
 
 ## 💡 Suggestions
-Feel free to **open an issue** or **make a pull request** on the [GitHub repository](#)  
-*(Replace `#` with your repo link)*  
+Feel free to **open an issue** or **make a pull request** on the [GitHub repository](https://github.com/VenmathiG-29/Weather-app.git)  
+  
 if you have suggestions to improve this project.
 
 ---
 
 ## 👩‍💻 Author
-**Phoebe Tan Jia Hui**
+**Venmathi G**
 
----
 
-## 📜 License
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
